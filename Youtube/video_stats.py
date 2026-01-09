@@ -33,8 +33,15 @@ def get_play_list_id(url: str):
 
 def get_videos_play_ids(base_url: str):
     video_ids = []
+    pageToken = None
     base_url = f'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults={maxResults}&playlistId={playlists}={API_KEY}'
-
+    
+    try:
+        while True:
+            if pageToken:
+                base_url += f"pageToken={pageToken}"
+    except requests.exceptions.RequestException as e:
+        raise e
 
 if __name__ == "__main__":
     playlists = get_play_list_id(url)
