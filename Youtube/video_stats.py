@@ -24,7 +24,7 @@ def get_play_list_id(url: str):
         data = get_json_channel(url)
 
         chaneel_items = data["items"][0]
-        channel_playlist_id = chaneel_items["contentDetails"]["relatedPlaylists"]
+        channel_playlist_id = chaneel_items["contentDetails"]["relatedPlaylists"]['uploads']
         
         return channel_playlist_id
     except requests.exceptions.RequestException as e:
