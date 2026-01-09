@@ -8,11 +8,12 @@ load_dotenv("Youtube\.env")
 #we all know why nothing in apu key
 API_KEY = os.getenv("API_KEY") 
 CHANNEL_HANDLE = "jujalag"
-url_playlist_id = f'https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle={CHANNEL_HANDLE}&key={API_KEY}'
+url = f'https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle={CHANNEL_HANDLE}&key={API_KEY}'
+maxResults = 50
 
 def get_json_channel(url: str):
     try:
-        response = requests.get(url_playlist_id, timeout=15)
+        response = requests.get(url, timeout=15)
         response.raise_for_status()
         
         return response.json()
