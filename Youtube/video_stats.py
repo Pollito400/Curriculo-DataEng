@@ -1,8 +1,12 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv("Youtube\.env")
 
 #we all know why nothing in apu key
-API_KEY = "" 
+API_KEY = os.getenv("API_KEY") 
 CHANNEL_HANDLE = "jujalag"
 url = f'https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle={CHANNEL_HANDLE}&key={API_KEY}'
 
