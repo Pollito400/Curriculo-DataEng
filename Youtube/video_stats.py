@@ -3,7 +3,7 @@ import json
 import os
 from dotenv import load_dotenv
 
-load_dotenv("Youtube\.env")
+load_dotenv("Youtube.env")
 
 API_KEY = os.getenv("API_KEY")
 CHANNEL_HANDLE = "jujalag"
@@ -49,3 +49,5 @@ def get_videos_play_ids(maxResults=maxResults, api_key=API_KEY):
 
 
 if __name__ == "__main__":
+    videos = get_videos_play_ids(maxResults=maxResults, api_key=API_KEY)
+    print(len(videos), videos)
