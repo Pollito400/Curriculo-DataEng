@@ -3,7 +3,7 @@ import json
 import os
 from dotenv import load_dotenv
 
-load_dotenv("Youtube.env")
+load_dotenv("Youtube\\.env")
 
 API_KEY = os.getenv("API_KEY")
 CHANNEL_HANDLE = "jujalag"
