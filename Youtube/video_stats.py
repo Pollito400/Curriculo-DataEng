@@ -18,9 +18,9 @@ def get_json(url: str):
     except requests.exceptions.RequestException as e:
         raise e
 
-def get_play_list_id(url: str):
+def get_play_list_id(channel_handle=CHANNEL_HANDLE, api_key=API_KEY):
     try:
-        url = f'https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id={CHANNEL_HANDLE}&key={API_KEY}'
+        url = f'https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&id={channel_handle}&key={api_key}'
         data = get_json(url)
 
         chaneel_items = data["items"][0]
@@ -30,8 +30,9 @@ def get_play_list_id(url: str):
     except requests.exceptions.RequestException as e:
         raise e
 
-def get_videos_play_ids(url: str):
-    url = f'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults={maxResults}&playlistId={channel_playlist_id}&key={API_KEY}'
+def get_videos_play_ids(maxResults=maxResults, api_key=API_KEY):
+    channel_playlist_id = get_play_list_id()
+    url = f'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults={maxResults}&playlistId={channel_playlist_id}&key={api_key}'
     video_ids = []
     pageToken = None
     
@@ -44,6 +45,10 @@ def get_videos_play_ids(url: str):
                 video_id = item["items"][0]["contentDetails"]
                 video_ids .append(video_id)
             pageToken = data.get('nextPageToken')
+            
+            if not pageToken:
+                break
+        return video_ids
 
     except requests.exceptions.RequestException as e:
         raise e
