@@ -26,27 +26,36 @@ def get_play_list_id(channel_handle=CHANNEL_HANDLE, api_key=API_KEY):
 
 
 def get_videos_ids(channel_handle=CHANNEL_HANDLE, maxResults=maxResults, api_key=API_KEY):
-    channel_playlist_id = get_play_list_id(channel_handle=channel_handle, api_key=api_key)
+    try:
+        channel_playlist_id = get_play_list_id(channel_handle=channel_handle, api_key=api_key)
 
-    video_ids = []
-    pageToken = None
+        video_ids = []
+        pageToken = None
 
-    while True:
-        url = f'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults={maxResults}&playlistId={channel_playlist_id}&key={api_key}'
-        if pageToken:
-            url += f"&pageToken={pageToken}"
+        while True:
+            url = f'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults={maxResults}&playlistId={channel_playlist_id}&key={api_key}'
+            if pageToken:
+                url += f"&pageToken={pageToken}"
 
-        data = get_json(url)
+            data = get_json(url)
 
-        for item in data.get("items", []):
-            video_ids.append(item["contentDetails"]["videoId"])
+            for item in data.get("items", []):
+                video_ids.append(item["contentDetails"]["videoId"])
 
-        pageToken = data.get("nextPageToken")
-        if not pageToken:
-            break
+            pageToken = data.get("nextPageToken")
+            if not pageToken:
+                break
 
-    return video_ids
+        return video_ids
+    except requests.exceptions.RequestException as e:
+        raise e
 
+def get_video_data(api_key = API_KEY, maxResults=maxResults):
+    try:
+        video_id = get_videos_ids(channel_handle=CHANNEL_HANDLE, maxResults=maxResults, api_key=api_key)
+        url = f'https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&part=snippet&part=statistics&id={video_id}HU&maxResults={maxResults}&key={api_key}'
+    except requests.exceptions.RequestException as e:
+        raise e
 
 if __name__ == "__main__":
     videos = get_videos_ids(maxResults=maxResults, api_key=API_KEY)
