@@ -25,7 +25,7 @@ def get_play_list_id(channel_handle=CHANNEL_HANDLE, api_key=API_KEY):
     return channel_items["contentDetails"]["relatedPlaylists"]["uploads"]
 
 
-def get_videos_play_ids(channel_handle=CHANNEL_HANDLE, maxResults=maxResults, api_key=API_KEY):
+def get_videos_ids(channel_handle=CHANNEL_HANDLE, maxResults=maxResults, api_key=API_KEY):
     channel_playlist_id = get_play_list_id(channel_handle=channel_handle, api_key=api_key)
 
     video_ids = []
@@ -49,5 +49,5 @@ def get_videos_play_ids(channel_handle=CHANNEL_HANDLE, maxResults=maxResults, ap
 
 
 if __name__ == "__main__":
-    videos = get_videos_play_ids(maxResults=maxResults, api_key=API_KEY)
+    videos = get_videos_ids(maxResults=maxResults, api_key=API_KEY)
     print(len(videos), videos)
