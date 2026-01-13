@@ -68,14 +68,12 @@ def get_video_data(api_key=API_KEY, maxResults=maxResults):
     try:
         # esto te trae IDs desde la playlist uploads del canal
         video_ids = get_videos_ids(channel_handle=CHANNEL_HANDLE, Results=maxResults, api_key=api_key)
-
         videos = []
-
         # videos.list acepta máximo 50 ids por request
-        for i in range(0, len(video_ids), maxResults):
-            batch = video_ids[i:i + maxResults]
-            ids_str = ",".join(batch)
-
+        for index in range(0, len(video_ids), maxResults):
+            batch = video_ids[index:index + maxResults]
+            ids_str = ",".join(batch) 
+            
             url = (
                 "https://youtube.googleapis.com/youtube/v3/videos"
                 f"?part=contentDetails,snippet,statistics&id={ids_str}&key={api_key}"
