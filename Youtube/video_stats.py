@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
+from datetime import date
 
 load_dotenv("Youtube\\.env")
 
@@ -104,6 +105,10 @@ def get_video_data(api_key=API_KEY, maxResults=maxResults):
     except (requests.exceptions.RequestException, KeyError, ValueError, TypeError, IndexError) as e:
         raise e
 
+def save_to_json(videos):
+    file_path = f'Youtube\\data\\Youtube_Data{date.today()}.json'
+    with open(file_path, "w", "utf-8") as json_outfile:
+        json.dump(videos, json_outfile, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
     # IDs
