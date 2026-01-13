@@ -72,8 +72,8 @@ def get_video_data(api_key=API_KEY, maxResults=maxResults):
         videos = []
 
         # videos.list acepta máximo 50 ids por request
-        for i in range(0, len(video_ids), 50):
-            batch = video_ids[i:i + 50]
+        for i in range(0, len(video_ids), maxResults):
+            batch = video_ids[i:i + maxResults]
             ids_str = ",".join(batch)
 
             url = (
