@@ -10,4 +10,4 @@ __pycache__/
 
 Youtube/data_Youtube/*.json
 .vscode
-Spotify\data_Spotify
+Spotify/data_Spotify/*.json
