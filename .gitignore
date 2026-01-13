@@ -1,0 +1,13 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Env files (secrets)
+.env
+.env.*
+!.env.example
+
+Youtube/data_Youtube/*.json
+.vscode
+Spotify\data_Spotify
