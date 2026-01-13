@@ -5,16 +5,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 USER = "pollito400"
-ACCESS_TOKEN = os.getenv("SPOTIFY_ACCESS_TOKEN")  # ponlo en tu .env
+ACCESS_TOKEN = os.getenv("SPOTIFY_ACCESS_TOKEN")
 
 def get_json(url: str, headers: dict | None = None):
     resp = requests.get(url, headers=headers, timeout=15)
     resp.raise_for_status()
     return resp.json()
 
-def get_user(user: str):
+def get_user(user: str, acess_token: str):
     url = f"https://api.spotify.com/v1/users/{user}"
-    headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
+    headers = {"Authorization": f"Bearer {acess_token}"}
     return get_json(url, headers=headers)
 
 if __name__ == "__main__":
