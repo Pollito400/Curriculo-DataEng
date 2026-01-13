@@ -1,4 +1,11 @@
 venv/
+.venv/
 __pycache__/
+*.pyc
+
+# Env files (secrets)
 .env
-logs/
+.env.*
+!.env.example
+
+Youtube/data/*.json
