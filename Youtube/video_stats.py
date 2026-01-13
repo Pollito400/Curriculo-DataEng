@@ -111,7 +111,7 @@ def save_to_json(videos):
         output_dir = Path("Youtube") / "data"
         output_dir.mkdir(parents=True, exist_ok=True)
             
-        file_path = f'Youtube\\data\\Youtube_Data{date.today().isoformat()}.json'
+        file_path = Path(f"Youtube\\data\\Youtube_Data{date.today().isoformat()}.json")
         with file_path.open("w", encoding="utf-8") as json_outfile:
             json.dump(videos, json_outfile, indent=4, ensure_ascii=False)
             
@@ -121,4 +121,5 @@ def save_to_json(videos):
 
 if __name__ == "__main__":
     videos = get_video_data()
-    save_to_json(videos)
+    saved_path = save_to_json(videos)
+    print(f"JSON guardado en: {saved_path}")
