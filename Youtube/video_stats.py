@@ -3,6 +3,7 @@ import json
 import os
 from dotenv import load_dotenv
 from datetime import date
+from pathlib import Path
 
 load_dotenv("Youtube\\.env")
 
@@ -106,17 +107,18 @@ def get_video_data(api_key=API_KEY, maxResults=maxResults):
         raise e
 
 def save_to_json(videos):
-    file_path = f'Youtube\\data\\Youtube_Data{date.today()}.json'
-    with open(file_path, "w", "utf-8") as json_outfile:
-        json.dump(videos, json_outfile, indent=4, ensure_ascii=False)
+    try:
+        output_dir = Path("Youtube") / "data"
+        output_dir.mkdir(parents=True, exist_ok=True)
+            
+        file_path = f'Youtube\\data\\Youtube_Data{date.today().isoformat()}.json'
+        with file_path.open("w", encoding="utf-8") as json_outfile:
+            json.dump(videos, json_outfile, indent=4, ensure_ascii=False)
+            
+        return file_path
+    except (OSError, TypeError, ValueError) as e:
+        raise e
 
 if __name__ == "__main__":
-    # IDs
-    ids = get_videos_ids(channel_handle=CHANNEL_HANDLE, Results=maxResults, api_key=API_KEY)
-    print("IDs encontrados:", len(ids))
-    print(ids[:10])
-
-    # Datos completos
-    videos = get_video_data(api_key=API_KEY, maxResults=maxResults)
-    print("Videos con data:", len(videos))
-    print(videos[:2])
+    videos = get_video_data()
+    save_to_json(videos)
