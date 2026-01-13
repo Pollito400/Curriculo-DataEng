@@ -1,0 +1,78 @@
+{
+    "kind": "youtube#videoListResponse",
+    "etag": "F_82FWT9t5sAzbgUfrU0BP271RA",
+    "items": [
+        {
+            "kind": "youtube#video",
+            "etag": "9qwJ9ROxIoAjfAaxMUeKWn3a2Iw",
+            "id": "2ZXfV3is0HU",
+            "snippet": {
+                "publishedAt": "2025-06-25T15:00:05Z",
+                "channelId": "UCFzGNDHEZ5-7d5UXxfHUcRg",
+                "title": "dark souls en menos de 1 hora",
+                "description": "el dark souls de las corridas muy rápidas\n\ntwitch https://www.twitch.tv/jujalag\nvods https://www.youtube.com/@jujavods\ninsta https://www.instagram.com/jujalag/\ntwitter https://twitter.com/jujalag/",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/2ZXfV3is0HU/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/2ZXfV3is0HU/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/2ZXfV3is0HU/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/2ZXfV3is0HU/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/2ZXfV3is0HU/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "jujalag",
+                "tags": [
+                    "jujalag",
+                    "juja",
+                    "dark souls",
+                    "speedrun"
+                ],
+                "categoryId": "20",
+                "liveBroadcastContent": "none",
+                "defaultLanguage": "es",
+                "localized": {
+                    "title": "dark souls en menos de 1 hora",
+                    "description": "el dark souls de las corridas muy rápidas\n\ntwitch https://www.twitch.tv/jujalag\nvods https://www.youtube.com/@jujavods\ninsta https://www.instagram.com/jujalag/\ntwitter https://twitter.com/jujalag/"
+                },
+                "defaultAudioLanguage": "es-ES"
+            },
+            "contentDetails": {
+                "duration": "PT19M51S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "statistics": {
+                "viewCount": "255570",
+                "likeCount": "19265",
+                "favoriteCount": "0",
+                "commentCount": "331"
+            }
+        }
+    ],
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 1
+    }
+}
