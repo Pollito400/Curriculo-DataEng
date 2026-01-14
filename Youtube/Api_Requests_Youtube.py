@@ -8,7 +8,7 @@ from pathlib import Path
 load_dotenv("Youtube\\.env")
 
 API_KEY = os.getenv("API_KEY")
-CHANNEL_HANDLE = "jujalag"   # si te falla, prueba "@jujalag"
+CHANNEL_HANDLE = "jujalag"
 maxResults = 50
 MinResults = 1
 
@@ -50,11 +50,9 @@ def get_videos_ids(channel_handle=CHANNEL_HANDLE, Results=MinResults, api_key=AP
             )
             if pageToken:
                 url += f"&pageToken={pageToken}"
-
             data = get_json(url)
 
             for item in data.get("items", []):
-                # playlistItems -> contentDetails.videoId
                 video_ids.append(item["contentDetails"]["videoId"])
 
             pageToken = data.get("nextPageToken")
